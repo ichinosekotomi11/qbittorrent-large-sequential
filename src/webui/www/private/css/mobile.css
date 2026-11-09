@@ -1,0 +1,293 @@
+/* Mobile layout adjustments. Desktop rules remain unchanged above 760px. */
+
+@media (max-width: 760px) {
+    html,
+    body {
+        height: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    #desktop {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #desktopNavbar {
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        white-space: nowrap;
+    }
+
+    #desktopNavbar > ul {
+        display: inline-flex;
+        min-width: max-content;
+    }
+
+    #desktopNavbar > ul > li {
+        float: none;
+    }
+
+    #desktopNavbar ul li a {
+        min-height: 38px;
+        padding: 9px 12px;
+    }
+
+    #desktopNavbar li ul {
+        position: fixed;
+        top: 38px;
+    }
+
+    #mochaToolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin: 0;
+        max-height: none;
+        overflow: visible;
+        padding: 4px;
+    }
+
+    #mochaToolbar > a,
+    #mochaToolbar > div:not(#mainWindowTabs):not(#torrentsFilterToolbar),
+    #mochaToolbar > span {
+        align-items: center;
+        display: inline-flex;
+        min-height: 40px;
+    }
+
+    #mochaToolbar > .divider {
+        background-position: left center;
+        padding-left: 8px;
+        padding-top: 0;
+    }
+
+    #mochaToolbar .mochaToolButton {
+        margin: 0 5px;
+    }
+
+    #mainWindowTabs {
+        float: none;
+        margin: 0;
+        max-width: 100%;
+        order: 10;
+        overflow: hidden;
+        width: 100%;
+    }
+
+    #mainWindowTabsList {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        padding-bottom: 1px;
+        scrollbar-width: none;
+    }
+
+    #mainWindowTabsList::-webkit-scrollbar {
+        display: none;
+    }
+
+    #mainWindowTabsList li a {
+        min-height: 38px;
+        padding: 9px 10px;
+    }
+
+    #torrentsFilterToolbar {
+        align-items: center;
+        display: grid;
+        gap: 4px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        order: 11;
+        width: 100%;
+    }
+
+    #torrentsFilterInput {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #torrentsFilterToolbar > label[for="torrentsFilterSelect"] {
+        grid-column: 1;
+    }
+
+    #torrentsFilterSelect {
+        grid-column: 2;
+        min-width: 0;
+        width: 100%;
+    }
+
+    #pageWrapper {
+        min-width: 0;
+        overflow: hidden;
+    }
+
+    /* Mocha creates these columns after page load. Keep filters usable without
+       allowing them to push the transfer list off the viewport. */
+    #filtersColumn {
+        float: none !important;
+        height: 148px !important;
+        max-height: 32vh;
+        width: 100% !important;
+    }
+
+    #filtersColumn_handle {
+        display: none;
+    }
+
+    #filtersColumn .panel,
+    #filtersColumn .panelWrapper,
+    #filtersColumn .mochaContentWrapper {
+        height: 100% !important;
+    }
+
+    #filtersColumn .mochaContentWrapper {
+        overflow-x: auto;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #filtersColumn .filterWrapper {
+        display: inline-block;
+        margin-right: 14px;
+        min-width: 150px;
+        vertical-align: top;
+    }
+
+    #filtersColumn .filterList {
+        max-height: 90px;
+        overflow-y: auto;
+    }
+
+    #mainColumn {
+        float: none !important;
+        height: calc(100% - 148px) !important;
+        min-width: 0;
+        width: 100% !important;
+    }
+
+    #mainColumn .panel,
+    #mainColumn .panelWrapper,
+    #mainColumn .mochaContentWrapper,
+    #transferList,
+    #propertiesPanel {
+        min-width: 0;
+    }
+
+    .dynamicTableDiv {
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+    }
+
+    .dynamicTable {
+        min-width: 680px;
+    }
+
+    #transferList .dynamicTable {
+        min-width: 720px;
+    }
+
+    .panel-header h2 {
+        max-width: calc(100% - 72px);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .mocha {
+        border-radius: 0;
+        left: 0 !important;
+        max-height: 100dvh !important;
+        max-width: 100vw !important;
+        width: 100vw !important;
+    }
+
+    .mochaContentWrapper {
+        max-width: 100vw;
+    }
+
+    .mochaContent {
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        padding: 8px;
+    }
+
+    .mochaIframe {
+        max-width: 100%;
+    }
+
+    fieldset.settings {
+        margin: 6px 0;
+        max-width: 100%;
+    }
+
+    fieldset.settings table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    div.formRow {
+        align-items: start;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 6px;
+    }
+
+    div.formRow > label {
+        flex: 1 1 13em;
+        min-width: 0;
+    }
+
+    div.formRow > input:not([type="checkbox"]):not([type="radio"]),
+    div.formRow > select,
+    div.formRow > textarea {
+        flex: 1 1 12em;
+        max-width: 100%;
+        min-width: 0;
+        width: auto !important;
+    }
+
+    button,
+    input[type="button"],
+    input[type="submit"],
+    select {
+        min-height: 36px;
+    }
+
+    .contextMenu {
+        max-width: calc(100vw - 12px);
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    #desktopNavbar ul li a {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    #filtersColumn {
+        height: 126px !important;
+    }
+
+    #mainColumn {
+        height: calc(100% - 126px) !important;
+    }
+
+    #filtersColumn .filterWrapper {
+        min-width: 132px;
+    }
+
+    #filtersColumn .filterList {
+        max-height: 72px;
+    }
+
+    .mochaTitlebar h3 {
+        padding-left: 8px;
+    }
+
+    .mochaContent {
+        padding: 6px;
+    }
+}

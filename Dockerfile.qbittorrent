@@ -1,0 +1,24 @@
+FROM ubuntu:25.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN sed -i -E 's#https?://(archive.ubuntu.com|security.ubuntu.com|ports.ubuntu.com)(/ubuntu-ports|/ubuntu)?#http://old-releases.ubuntu.com/ubuntu#g' /etc/apt/sources.list.d/ubuntu.sources \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential cmake ninja-build \
+        qt6-base-dev qt6-base-private-dev qt6-tools-dev \
+        libboost-dev libssl-dev zlib1g-dev libtorrent-rasterbar-dev \
+        ca-certificates \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /src
+COPY . /src
+
+RUN find /src -type f -name '._*' -delete \
+    && cmake -S . -B build -G Ninja \
+        -DGUI=OFF \
+        -DWEBUI=ON \
+        -DCMAKE_BUILD_TYPE=Release \
+    && cmake --build build --parallel 1
+
+ENTRYPOINT ["/src/build/qbittorrent-nox"]

@@ -1,0 +1,17 @@
+services:
+  qbittorrent:
+    build:
+      context: .
+      dockerfile: Dockerfile.qbittorrent
+    container_name: qbittorrent-large-sequential
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+      - "6881:6881"
+      - "6881:6881/udp"
+    volumes:
+      - ./docker-config:/config
+      - ./docker-downloads:/downloads
+    command:
+      - "--profile=/config"
+      - "--confirm-legal-notice"
